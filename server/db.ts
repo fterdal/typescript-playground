@@ -1,16 +1,8 @@
-import { Sequelize, Model, DataTypes } from 'sequelize'
+import { Sequelize } from 'sequelize-typescript'
 
-export const db = new Sequelize('postgres://localhost:5432/cookie-cat', {
+export const sequelize = new Sequelize({
   logging: false,
+  dialect: 'postgres',
+  database: 'cookie-cat',
+  models: [__dirname + '/models'],
 })
-
-
-
-export const seedCats = [
-  {
-    name: 'Rigatoni',
-  },
-  {
-    name: 'Tom',
-  },
-]

@@ -55,7 +55,7 @@ var start = function () { return __awaiter(_this, void 0, void 0, function () {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, 3, 4]);
-                return [4 /*yield*/, db_1.db.sync({ force: true })];
+                return [4 /*yield*/, db_1.sequelize.sync({ force: true })];
             case 1:
                 _a.sent();
                 app.listen(PORT, function () { return __awaiter(_this, void 0, void 0, function () {
@@ -70,7 +70,7 @@ var start = function () { return __awaiter(_this, void 0, void 0, function () {
                 console.log('Oh no! Something went wrong.', err_1);
                 return [3 /*break*/, 4];
             case 3:
-                db_1.db.close();
+                db_1.sequelize.close();
                 return [7 /*endfinally*/];
             case 4: return [2 /*return*/];
         }

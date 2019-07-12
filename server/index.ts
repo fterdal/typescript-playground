@@ -1,6 +1,6 @@
 import express from 'express'
 import morgan from 'morgan'
-import { db } from './db'
+import { sequelize as db } from './db'
 
 const app = express()
 

@@ -1,14 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var sequelize_1 = require("sequelize");
-exports.db = new sequelize_1.Sequelize('postgres://localhost:5432/cookie-cat', {
+var sequelize_typescript_1 = require("sequelize-typescript");
+exports.sequelize = new sequelize_typescript_1.Sequelize({
     logging: false,
+    dialect: 'postgres',
+    database: 'cookie-cat',
+    models: [__dirname + '/models'],
 });
-exports.seedCats = [
-    {
-        name: 'Rigatoni',
-    },
-    {
-        name: 'Tom',
-    },
-];
