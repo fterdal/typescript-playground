@@ -49,35 +49,30 @@ app.get('*', function (req, res, next) {
 });
 var PORT = 3000;
 var start = function () { return __awaiter(_this, void 0, void 0, function () {
-    var rigatoni, cats, err_1;
+    var err_1;
     var _this = this;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 3, 4, 5]);
-                return [4 /*yield*/, db_1.sequelize.sync({ force: true })];
+                _a.trys.push([0, 2, 3, 4]);
+                return [4 /*yield*/, db_1.db.sync({ force: true })];
             case 1:
                 _a.sent();
-                rigatoni = db_1.seedCats[0];
-                return [4 /*yield*/, db_1.Cat.bulkCreate(db_1.seedCats)];
-            case 2:
-                cats = _a.sent();
-                console.log(cats[0].name);
                 app.listen(PORT, function () { return __awaiter(_this, void 0, void 0, function () {
                     return __generator(this, function (_a) {
                         console.log("Listening from port " + PORT);
                         return [2 /*return*/];
                     });
                 }); });
-                return [3 /*break*/, 5];
-            case 3:
+                return [3 /*break*/, 4];
+            case 2:
                 err_1 = _a.sent();
                 console.log('Oh no! Something went wrong.', err_1);
-                return [3 /*break*/, 5];
-            case 4:
-                db_1.sequelize.close();
+                return [3 /*break*/, 4];
+            case 3:
+                db_1.db.close();
                 return [7 /*endfinally*/];
-            case 5: return [2 /*return*/];
+            case 4: return [2 /*return*/];
         }
     });
 }); };
