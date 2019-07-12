@@ -20,7 +20,6 @@
     "nodemon": "^1.19.1",
     "pg": "^6.4.2",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^5.10.0",
-    "sequelize-typescript": "^1.0.0-beta.3"
+    "sequelize": "^5.10.0"
   }
 }
