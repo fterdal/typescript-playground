@@ -1,6 +1,7 @@
 import express from 'express'
 import morgan from 'morgan'
 import { sequelize as db } from './db'
+import { seed } from './seed'
 
 const app = express()
 
@@ -17,6 +18,7 @@ const PORT = 3000
 const start = async () => {
   try {
     await db.sync({ force: true })
+    await seed()
 
     app.listen(PORT, async () => {
       console.log(`Listening from port ${PORT}`)

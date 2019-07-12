@@ -22,11 +22,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var sequelize_1 = require("sequelize");
 var sequelize_typescript_1 = require("sequelize-typescript");
-exports.db = new sequelize_1.Sequelize('postgres://localhost:5432/cookie-cat', {
-    logging: false,
-});
 var Cat = /** @class */ (function (_super) {
     __extends(Cat, _super);
     function Cat() {
@@ -36,17 +32,13 @@ var Cat = /** @class */ (function (_super) {
         sequelize_typescript_1.Column,
         __metadata("design:type", String)
     ], Cat.prototype, "name", void 0);
+    __decorate([
+        sequelize_typescript_1.Column,
+        __metadata("design:type", Number)
+    ], Cat.prototype, "age", void 0);
     Cat = __decorate([
         sequelize_typescript_1.Table
     ], Cat);
     return Cat;
 }(sequelize_typescript_1.Model));
 exports.Cat = Cat;
-exports.seedCats = [
-    {
-        name: 'Rigatoni',
-    },
-    {
-        name: 'Tom',
-    },
-];

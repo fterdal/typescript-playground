@@ -34,50 +34,21 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = __importDefault(require("express"));
-var morgan_1 = __importDefault(require("morgan"));
-var db_1 = require("./db");
-var seed_1 = require("./seed");
-var app = express_1.default();
-app.use(morgan_1.default('dev'));
-app.get('*', function (req, res, next) {
-    res.send("\n    <h1>Path: " + req.path + "</h1>\n  ");
-});
-var PORT = 3000;
-var start = function () { return __awaiter(_this, void 0, void 0, function () {
-    var err_1;
-    var _this = this;
+var Cat_1 = require("./models/Cat");
+exports.seed = function () { return __awaiter(_this, void 0, void 0, function () {
+    var rigatoni;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 3, 4, 5]);
-                return [4 /*yield*/, db_1.sequelize.sync({ force: true })];
+                rigatoni = new Cat_1.Cat({ name: 'Rigatoni' });
+                return [4 /*yield*/, rigatoni.save()
+                    // console.log(await Cat.findAll())
+                ];
             case 1:
                 _a.sent();
-                return [4 /*yield*/, seed_1.seed()];
-            case 2:
-                _a.sent();
-                app.listen(PORT, function () { return __awaiter(_this, void 0, void 0, function () {
-                    return __generator(this, function (_a) {
-                        console.log("Listening from port " + PORT);
-                        return [2 /*return*/];
-                    });
-                }); });
-                return [3 /*break*/, 5];
-            case 3:
-                err_1 = _a.sent();
-                console.log('Oh no! Something went wrong.', err_1);
-                return [3 /*break*/, 5];
-            case 4:
-                db_1.sequelize.close();
-                return [7 /*endfinally*/];
-            case 5: return [2 /*return*/];
+                return [2 /*return*/];
         }
     });
 }); };
-start();
