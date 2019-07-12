@@ -1,5 +1,6 @@
 import express from 'express'
 import morgan from 'morgan'
+import { sequelize, Cat, seedCats } from './db'
 
 const app = express()
 
@@ -12,6 +13,23 @@ app.get('*', (req: any, res: any, next: any) => {
 })
 
 const PORT = 3000
-app.listen(PORT, () => {
-  console.log(`Listening from port ${PORT}`)
-})
+
+const start = async () => {
+  try {
+    await sequelize.sync({ force: true })
+    const [rigatoni] = seedCats
+    // const bigrig = await (new Cat(rigatoni)).save()
+    // console.log(bigrig.name)
+    const cats = await Cat.bulkCreate(seedCats)
+    console.log(cats[0].name)
+
+    app.listen(PORT, async () => {
+      console.log(`Listening from port ${PORT}`)
+    })
+  } catch (err) {
+    console.log('Oh no! Something went wrong.', err)
+  } finally {
+    sequelize.close()
+  }
+}
+start()
